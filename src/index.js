@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './Components/Root'
+import Root from './components/Root'
 import reportWebVitals from './reportWebVitals';
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  
+
   const root = document.getElementById("root");
   ReactDOM.render(<Root />, root)
 })
