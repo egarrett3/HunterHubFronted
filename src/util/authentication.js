@@ -6,8 +6,9 @@ export const login = (user) => {
         method: 'POST',
         url:'/api/users/login',
         data: user
-    }).then(response => console.log(response))
-    .catch(err => console.log(err))
+    })
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
 }
 
 export const signup = (user) => {
