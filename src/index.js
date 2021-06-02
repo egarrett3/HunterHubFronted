@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root'
 import reportWebVitals from './reportWebVitals';
-
+import 'normalize.css';
 
 window.addEventListener('DOMContentLoaded', () => {
 
