@@ -1,0 +1,82 @@
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-entrance {
+    height: 140px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-auth-form {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form-text {
+    color: rgb(204, 204, 204);
+}
+
+.switch-form {
+    cursor: pointer;
+    color: rgb(255, 166, 0);
+    font-weight: bold;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+input[name='login-email']::placeholder,
+input[name='login-password']::placeholder, 
+input[name='signup-password']::placeholder, 
+input[name='signup-email']::placeholder, 
+input[name='signup-username']::placeholder {
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+input[name='login-email']:focus::placeholder,
+input[name='login-password']:focus::placeholder, 
+input[name='signup-password']:focus::placeholder, 
+input[name='signup-email']:focus::placeholder, 
+input[name='signup-username']:focus::placeholder {
+    color:transparent;
+}
+
+input[name='login-email'],
+input[name='login-password'], 
+input[name='signup-password'], 
+input[name='signup-email'], 
+input[name='signup-username'] {
+    outline: none;
+    border: 1px solid rgb(107, 107, 107);
+    border-radius: 1ch;
+    padding: 1px 5px 2px 5px;
+}
+
+.signup-btn,
+.login-btn {
+    text-decoration: none;
+    color: rgb(107, 107, 107);
+    letter-spacing: 5px;
+    background: transparent;
+    border: 1px solid rgb(107, 107, 107);
+    border-radius: 8px;
+    width: 90%;
+    margin-top: 10px;
+}
