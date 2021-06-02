@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Login from './login';
 import Signup from './signup';
+import '../../stylesheet/landing_page.css'
 
 const LandingPage = () => {
-    const [ loginusername, setLoginUsername] = useState('');
-    const [ loginemail, setLoginEmail] = useState('');
-    const [ loginpassword, setLoginPassword] = useState('');
-    const [ signupusername, setSignupUsername] = useState('');
-    const [ signupemail, setSignupEmail] = useState('');
-    const [ signuppassword, setSignupPassword] = useState('');
+    const [loginusername, setLoginUsername] = useState('');
+    const [loginemail, setLoginEmail] = useState('');
+    const [loginpassword, setLoginPassword] = useState('');
+    const [signupusername, setSignupUsername] = useState('');
+    const [signupemail, setSignupEmail] = useState('');
+    const [signuppassword, setSignupPassword] = useState('');
+
+    const [toggle,setToggle] = useState(true);
+
+    function toggleAuth() {
+      setToggle(!toggle);
+    }
 
     function updateValue(e) {
         switch(e.target.name) {
@@ -38,18 +45,23 @@ const LandingPage = () => {
     return (
       <>
         <div className="user-entrance">
-            <Login 
-                updateValue={updateValue}
-                username={loginusername}
-                password={loginpassword}
-                email={loginemail}
+          {toggle ? (
+            <Login
+              updateValue={updateValue}
+              username={loginusername}
+              password={loginpassword}
+              email={loginemail}
+              toggle={toggleAuth}
             ></Login>
-            <Signup 
-                updateValue={updateValue}
-                username={signupusername}
-                password={signuppassword}
-                email={signupemail}
+          ) : (
+            <Signup
+              updateValue={updateValue}
+              username={signupusername}
+              password={signuppassword}
+              email={signupemail}
+              toggle={toggleAuth}
             ></Signup>
+          )}
         </div>
       </>
     );
