@@ -24,7 +24,7 @@ export const login = (user) => dispatch => {
         .catch(err => dispatch(receiveErrors(err)))
 }
 
-export const login = (user) => dispatch => {
+export const signup = (user) => dispatch => {
     Auth.signup(user)
         .then(user => dispatch(receiveCurrentUser(user)))
         .catch(err => dispatch(receiveErrors(err)))
