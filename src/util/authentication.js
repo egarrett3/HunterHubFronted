@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const login = (user) => {
-    debugger
     axios({
         method: 'POST',
         url:'/api/users/login',
