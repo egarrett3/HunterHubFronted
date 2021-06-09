@@ -1,7 +1,7 @@
 #root {
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: 0;
     padding: 10px;
     min-height: 100vh;
     box-sizing: border-box;
@@ -10,13 +10,23 @@
     justify-content: center;
 }
 
+.user-authAndError-container {
+    position: absolute;
+    left: 39%;
+    height: 140px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+}
+
 .user-entrance {
+    position: relative;
     height: 140px;
     width: 240px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .user-auth-form {
@@ -72,6 +82,7 @@ input[name='signup-username'] {
 .signup-btn,
 .login-btn {
     text-decoration: none;
+    box-sizing: border-box;
     color: rgb(107, 107, 107);
     letter-spacing: 5px;
     background: transparent;
@@ -79,4 +90,33 @@ input[name='signup-username'] {
     border-radius: 8px;
     width: 90%;
     margin-top: 10px;
+}
+
+.signup-btn:focus,
+.login-btn:focus {
+    outline: none;
+}
+
+.signup-btn:active,
+.login-btn:active {
+    margin-top: 8px;
+    border: 2px solid orange;
+    color: orange;
+    box-shadow: inset 1px 1px rgb(255, 208, 120);
+    font-weight: bold;
+}
+
+.signup-btn:disabled,
+.login-btn:disabled {
+    color: rgb(167, 167, 167);
+    border: 1px solid rgb(167, 167, 167);
+    cursor: none;
+}
+
+
+.userAuth-reqs {
+    margin: 10px 0 0 0;
+    padding: 0;
+    position: relative;
+    height: 80px;
 }
