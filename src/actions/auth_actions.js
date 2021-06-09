@@ -1,31 +1,38 @@
-import * as Auth from '../util/authentication';
+import * as APIutil from '../util/authentication';
 
-export const CURRENT_USER = "CURRENT_USER";
-export const AUTH_ERRORS = "AUTH_ERRORS";
+export const LOGIN_CURRENT_USER = "LOGIN_CURRENT_USER";
+export const RECEIVE_AUTH_ERRORS = "RECEIVE_AUTH_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-export const receiveCurrentUser = (user) => {
-    return ({
-        type: CURRENT_USER,
-        user
-    })
-}
+export const loginCurrentUser = (user) => ({
+    type: LOGIN_CURRENT_USER,
+    user
+})
 
-export const receiveErrors = (err) => {
-    return ({
-        type: AUTH_ERRORS,
-        err
-    })
-}
+export const receiveErrors = (err) => ({
+    type: RECEIVE_AUTH_ERRORS,
+    err
+})
+
+export const clearErrors = () => ({
+    type: CLEAR_ERRORS
+})
 
 
 export const login = (user) => dispatch => {
-    Auth.login(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
-        .catch(err => dispatch(receiveErrors(err)))
+    APIutil.login(user)
+        .then(user => dispatch(loginCurrentUser(user)))
+            .catch(err => dispatch(receiveErrors(err.response.data)))
 }
 
 export const signup = (user) => dispatch => {
-    Auth.signup(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
-        .catch(err => dispatch(receiveErrors(err)))
+    APIutil.signup(user)
+        .then(user => dispatch(loginCurrentUser(user)))
+            .catch(err => dispatch(receiveErrors(err.response.data)))
 }
+
+// export const passwordSignupValidation = (password) => dispatch => {
+//     APIutil.validatePassword(password)
+//         .then(strength => dispatch(receiveErrors(strength.data)))
+//             .catch(err => dispatch(receiveErrors(err.response.data)))
+// }
