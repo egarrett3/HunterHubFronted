@@ -52,7 +52,9 @@ const LandingPage = () => {
         userNameContents: true,
         userNameLngth: true,
       });
-      dispatch(clearErrors())
+      if (!(_.isEmpty(authErrors))) {
+        dispatch(clearErrors())
+      }
     }  
 
     function pswdSelected(bool) {
