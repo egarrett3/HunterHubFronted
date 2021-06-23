@@ -7,11 +7,13 @@ import 'normalize.css';
 
 window.addEventListener('DOMContentLoaded', () => {
   let store = {};
-  let preloadedState = {}
+  let preloadedState = {};
+
   store = configureStore(preloadedState);
 
+
   const root = document.getElementById("root");
-  ReactDOM.render(<Root store={store}/>, root)
+  ReactDOM.render(<Root store={store.store} persistor={store.persistor}/>, root)
 })
 
 // If you want to start measuring performance in your app, pass a function
