@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import Login from './login';
 import Signup from './signup';
 import Validation from './validations';
@@ -7,6 +8,7 @@ import _ from "lodash";
 import '../../stylesheet/landing_page.css';
 import { clearErrors } from '../../actions/auth_actions';
 import isEmpty from 'lodash/isEmpty';
+
 
 const LandingPage = () => {
     //login and signup user information
@@ -41,7 +43,7 @@ const LandingPage = () => {
     const authErrors = useSelector((state) => {
         return state.errors
     });
-
+  
     function toggleAuth() {
       setToggle(!toggle);
       setValidate({
@@ -213,52 +215,50 @@ const LandingPage = () => {
         && !isEmpty(authErrors)) {
         dispatch(clearErrors())
       }
-
-      // return () => {
-
-      // }
     }, [ispswdSelected,signuppassword,isUserNameSelected,signupusername,signupemail,isEmailSelected]);
 
-
+ 
     return (
       <>
-        <div className="user-authAndError-container">
-          <div className="user-entrance">
-            {toggle ? (
-              <Login
-                updateValue={updateValue}
-                username={loginusername}
-                password={loginpassword}
-                email={loginemail}
-                loginSelected={loginSelected}
-                toggle={toggleAuth}
-              ></Login>
-            ) : (
-              <Signup
-                updateValue={updateValue}
-                username={signupusername}
-                password={signuppassword}
-                email={signupemail}
-                pswdSelected={pswdSelected}
-                ispswdValid={ispswdValid}
-                userNameSelected={userNameSelected}
-                emailSelected={emailSelected}
-                isUserNameValid={isUserNameValid}
-                toggle={toggleAuth}
-              ></Signup>
-            )}
+        <div className='auth-background'>
+          <div className="user-authAndError-container">
+            <div className="user-entrance">
+              {toggle ? (
+                <Login
+                  updateValue={updateValue}
+                  username={loginusername}
+                  password={loginpassword}
+                  email={loginemail}
+                  loginSelected={loginSelected}
+                  toggle={toggleAuth}
+                ></Login>
+              ) : (
+                <Signup
+                  updateValue={updateValue}
+                  username={signupusername}
+                  password={signuppassword}
+                  email={signupemail}
+                  pswdSelected={pswdSelected}
+                  ispswdValid={ispswdValid}
+                  userNameSelected={userNameSelected}
+                  emailSelected={emailSelected}
+                  isUserNameValid={isUserNameValid}
+                  toggle={toggleAuth}
+                ></Signup>
+              )}
+            </div>
+              {/* {toggle ? (
+                <></>
+              ) : ( */}
+                <Validation 
+                  attachErrorMessage={attachErrorMessage}
+                  isLoginSelected={isLoginSelected}
+                  authErrors={authErrors}
+                >
+                  {validate}
+                </Validation>
+              {/* )} */}
           </div>
-            {/* {toggle ? (
-              <></>
-            ) : ( */}
-              <Validation 
-                attachErrorMessage={attachErrorMessage}
-                isLoginSelected={isLoginSelected}
-                authErrors={authErrors}
-              >
-                {validate}
-              </Validation>
-            {/* )} */}
         </div>
       </>
     );
