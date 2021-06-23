@@ -14,7 +14,7 @@ const Login = ({updateValue,password,email,toggle,loginSelected}) => {
       password: password,
     };
 
-    dispatch(login(user));
+    dispatch(login(user))
   };
 
    return (
@@ -45,7 +45,7 @@ const Login = ({updateValue,password,email,toggle,loginSelected}) => {
          ></input>
          <input
            className="login-password"
-           type="text"
+           type="password"
            name="login-password"
            value={password}
            onChange={updateValue}
