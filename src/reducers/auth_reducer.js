@@ -1,4 +1,4 @@
-import { LOGIN_CURRENT_USER } from '../actions/auth_actions'
+import { RECEIVE_CURRENT_USER } from '../actions/auth_actions';
 
 const initialState = {
     isAuthenticated: false,
@@ -8,14 +8,15 @@ const initialState = {
 const authSessionReducer = (state = initialState, action) => {
 
     switch(action.type) {
-        case LOGIN_CURRENT_USER:
-            return {
+        case RECEIVE_CURRENT_USER:
+            const user = {
                 ...state,
                 isAuthenticated: !!action.user,
-                currentUser: action.user
+                currentUser: action.user.data
             }
+            return user;
         default:
-            return state
+            return initialState
     }
 }
 
