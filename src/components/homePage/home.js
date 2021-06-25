@@ -1,10 +1,13 @@
 import React from 'react';
+import HarvestStatistics from './harvest_stats';
+import Map from './map';
 
 const Home = () => {
 
     return (
         <>
-            <span>we are here!</span>
+            <Map />
+            <HarvestStatistics />
         </>
     )
 }
