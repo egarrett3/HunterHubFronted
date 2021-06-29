@@ -7,10 +7,6 @@ const Validation = ({children,attachErrorMessage,isLoginSelected,authErrors}) =>
 
     const dispatch = useDispatch();
 
-    // const authErrors = useSelector((state) => {
-    //     return state.errors
-    // });
-
     function filterErrors(authErrors) {
         const keys = Object.keys(children);
         const userAuthReqs = document.querySelector('.userAuth-reqs');
