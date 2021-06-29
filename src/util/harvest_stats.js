@@ -1,9 +1,12 @@
 import axios from 'axios';
 
 export const getHarvestStats = (payload) => {
+    const animal = payload.animal;
+    const season = payload.season;
+    const year = payload.year;
+
     return axios({
         method: 'GET',
-        url: '/api/harveststatistics/fetchstats',
-        data: payload,
+        url: `/api/harveststatistics/${season}/${animal}/${year}`,
     })
 }
