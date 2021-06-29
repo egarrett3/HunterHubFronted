@@ -21,14 +21,14 @@ export const clearErrors = () => ({
 
 export const login = (user) => dispatch => {
     APIutil.login(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
-            .catch(err => dispatch(receiveErrors(err.response.data)))
+        .then(user => dispatch(receiveCurrentUser(user.data)))
+            .catch(err => dispatch(receiveErrors(err)))
 }
 
 export const signup = (user) => dispatch => {
     APIutil.signup(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
-            .catch(err => dispatch(receiveErrors(err.response.data)))
+        .then(user => dispatch(receiveCurrentUser(user.data)))
+            .catch(err => dispatch(receiveErrors(err)))
 }
 
 // export const passwordSignupValidation = (password) => dispatch => {
