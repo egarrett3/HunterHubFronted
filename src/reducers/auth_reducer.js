@@ -6,17 +6,17 @@ const initialState = {
 }
 
 const authSessionReducer = (state = initialState, action) => {
-
+    
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
             const user = {
                 ...state,
                 isAuthenticated: !!action.user,
-                currentUser: action.user.data
+                currentUser: action.user
             }
             return user;
         default:
-            return initialState
+            return state
     }
 }
 
