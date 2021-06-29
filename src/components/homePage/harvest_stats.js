@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStats } from '../../actions/harvest_stats_actions';
+import isEmpty from 'lodash/isEmpty';
 
 const HarvestStatistics = ({}) => {
-    const [animal,setAnimal] = useState();
-    const [year,setYear] = useState();
-    const [season,setSeason] = useState();
+    const [animal,setAnimal] = useState('');
+    const [year,setYear] = useState('');
+    const [season,setSeason] = useState('');
 
     const dispatch = useDispatch();
 
     const harvestData = useSelector((state) => {
-        return state.harvestData
+        if (!isEmpty(state.harvestData)) {
+            return state.harvestData
+        } else {
+            return [];
+        }
     });
 
     const fetchHarvestStats = (e) => {
@@ -26,10 +31,11 @@ const HarvestStatistics = ({}) => {
     return (
         <>
             <span>HarvestPage</span>
-            <div onClick={(e) => setAnimal(e.target.value)}>Elk</div>
-            <div onClick={(e) => setSeason(e.target.value)}>2018</div>
-            <div onClick={(e) => setYear(e.target.value)}>general</div>
-            <div onClick={() => fetchHarvestStats}>{harvestData}</div>
+            <div onClick={(e) => setAnimal(e.target.innerText)}>Elk</div>
+            <div onClick={(e) => setSeason(e.target.innerText)}>general</div>
+            <div onClick={(e) => setYear(e.target.innerText)}>2018</div>
+            <div onClick={(e) => fetchHarvestStats(e)}>click here to grab data</div>
+            {/* <div>{harvestData}</div> */}
         </>
     )
 }
