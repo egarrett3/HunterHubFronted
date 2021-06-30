@@ -29,15 +29,52 @@ const HarvestStatistics = ({}) => {
     }
 
     return (
-        <>
-            <span>HarvestPage</span>
-            <div onClick={(e) => setAnimal(e.target.innerText)}>Elk</div>
-            <div onClick={(e) => setSeason(e.target.innerText)}>general</div>
-            <div onClick={(e) => setYear(e.target.innerText)}>2018</div>
-            <div onClick={(e) => fetchHarvestStats(e)}>click here to grab data</div>
-            {/* <div>{harvestData}</div> */}
-        </>
-    )
+      <div className="harvest-stats-container">
+          <div className='options-container'>
+            <div className="search-options">
+            <div className="harvest-criteria">Animal
+                <div className='dropdown'>
+                    <div>Elk</div>
+                    <div>Sheep</div>
+                    <div>Deer</div>
+                    <div>Moose</div>
+                    <div>Bear</div>
+                    <div>Wolf</div>
+                    <div>Pronghorn</div>
+                    <div>Lion</div>
+                    <div>Turkey</div>
+                    <div>Goat</div>
+                </div>
+            </div>
+            <div className="harvest-criteria">Year
+                <div className='dropdown'>
+                    <div>2019</div>
+                    <div>2018</div>
+                    <div>2017</div>
+                    <div>2016</div>
+                    <div>2015</div>
+                    <div>2014</div>
+                    <div>2013</div>
+                    <div>2012</div>
+                    <div>2011</div>
+                    <div>2010</div>
+                </div>
+            </div>
+            <div className="harvest-criteria">Method
+                <div className='dropdown'>
+                    <div>General</div>
+                    <div>All Weapons Combined</div>
+                    <div>Any Weapon</div>
+                    <div>Archery</div>
+                    <div>Muzzleloader</div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+        <div className="stats-presentation"></div>
+      </div>
+    );
 }
 
 export default HarvestStatistics;
