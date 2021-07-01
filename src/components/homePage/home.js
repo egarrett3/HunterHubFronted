@@ -1,13 +1,14 @@
 import React from 'react';
-import HarvestStatistics from './harvest_stats';
+import StatsFrame from './stats_frame';
 import Map from './map';
+import '../../stylesheet/home_page.css';
 
 const Home = () => {
 
     return (
         <>
             <Map />
-            <HarvestStatistics />
+            <StatsFrame />
         </>
     )
 }

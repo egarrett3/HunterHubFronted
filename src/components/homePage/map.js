@@ -3,9 +3,9 @@ import React from 'react';
 const Map = ({}) => {
 
     return (
-        <> 
-            <span>Map</span>
-        </>
+        <div className='map-container'> 
+            
+        </div>
     )
 }
 
