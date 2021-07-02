@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RenderList from "./render_list";
 
 const StatsOptions = ({setPayload}) => {
-    const [animal, setAnimal] = useState("deer");
+    const [animal, setAnimal] = useState("Deer");
     const [year, setYear] = useState("2019");
     const [season, setSeason] = useState("general");
 
@@ -12,6 +12,24 @@ const StatsOptions = ({setPayload}) => {
             year: year,
             season: season
         })
+        if (animal === "Deer" ||
+            animal === "Elk" ||
+            animal === "Bear" ||
+            animal === "Pronghorn" ||
+            animal === "Turkey") {
+              setSeason('general')
+          } else if (
+            animal === "Lion" || 
+            animal === "Wolf"
+          ) {
+              setSeason('general')
+          } else if (
+            animal === "Moose" || 
+            animal === "Sheep" || 
+            animal === "Goat"
+          ) {
+              setSeason("controlled")
+          }
     }, [animal,year,season])
 
     return (
@@ -31,9 +49,9 @@ const StatsOptions = ({setPayload}) => {
               </div>
             </div>
             <div className="harvest-criteria">
-              Method: {season}
+              Hunt: {season}
               <div className="dropdown method">
-                <RenderList setter={setSeason}>{methods}</RenderList>
+                <RenderList setter={setSeason} animal={animal}>{methods}</RenderList>
               </div>
             </div>
           </div>
@@ -69,11 +87,8 @@ const years = [
 ];
 
 const methods = [
-  "General",
-  "All Weapons Combined",
-  "Any Weapon",
-  "Archery",
-  "Muzzleloader",
-];
+  "general",
+  "controlled"
+]
 
 export default StatsOptions;
