@@ -10,3 +10,10 @@ export const getHarvestStats = (payload) => {
         url: `/api/harveststatistics/${season}/${animal}/${year}`,
     })
 }
+
+export const getHarvestOptions = () => {
+    return axios({
+        method: 'GET',
+        url: `/api/harvestoptions`,
+    })
+}

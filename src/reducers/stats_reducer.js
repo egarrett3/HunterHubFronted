@@ -1,15 +1,21 @@
 import { RECEIVE_STATS, RECEIVE_STATS_ERROR } from '../actions/harvest_stats_actions';
 import merge from "lodash/merge";
 
-const filterUnit = () => {
+const filterUnit = (harvestData,unit) => {
   let unitArr = [];
-  for (let i = 0; i < harvestData.length; i++) {
-    harvestData[i].forEach((element) => {
-      if (element[0] === "Unit" && element[1] === "1") {
-        unitArr.push(harvestData[i]);
-      }
-    });
+  if (!unit) { 
+    unitArr.push(harvestData[0])
   }
+  else {
+    for (let i = 0; i < harvestData.length; i++) {
+      harvestData[i].forEach((element) => {
+        if ([...element].includes(unit)) {
+          unitArr.push(harvestData[i]);
+        }
+      });
+    }
+  }
+  debugger
   return unitArr;
 };
 
@@ -19,11 +25,16 @@ const statsReducer = (state = {}, action) => {
         case RECEIVE_STATS:
             if (action.stats) {
                 const animalObj = action.stats.data.result;
+                const unit = action.unit
                 let animalStats = [];
+
                 animalObj.forEach(element => {
                    animalStats.push(Object.entries(element)); 
                 });
-                return animalStats;
+
+                const stats = filterUnit(animalStats,unit)
+
+                return stats
             }
         case RECEIVE_STATS_ERROR:
             if (action.err) {

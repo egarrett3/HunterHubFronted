@@ -3,29 +3,39 @@ import { RECEIVE_OPTIONS } from '../actions/harvest_stats_actions';
 function animals(options) {
     const [opt] = options;
     let animalObj = {};
-    let animal = '';
-    let seasonANDyear = [];
+    let general = [];
+    let controlled = [];
+    let cntrl = false;
 
     opt.forEach((ele) => {
         let anml = ele[0];
         let anmlData = ele[1];
 
-        animal = anml;
-
-        debugger
         anmlData.forEach((ele2) => {
-            debugger
-            if (/\d/.test(ele2)) {
-                debugger
-                seasonANDyear.push(ele2.trim())
-            } else if (/Controlled|General/.test(ele2)) {
-                debugger
-                seasonANDyear.push(ele2)
+            
+            if (cntrl) {
+                if (/\d/.test(ele2)) controlled.push(ele2);
+            } else {
+                if (/\d/.test(ele2)) general.push(ele2);
             }
+            
+            if (/Controlled/.test(ele2)) {
+                cntrl = true
+            } 
+            
+            // if (/\d/.test(ele2)) {
+            //     seasonANDyear.push(ele2.trim())
+            // } else if (/Controlled|General/.test(ele2)) {
+            //     seasonANDyear.unshift(ele2)
+            // }
         })
-        animalObj[animal] = [seasonANDyear];
-        animal = '';
-        seasonANDyear = [];
+        animalObj[anml] = {
+            general: general,
+            controlled: controlled
+        };
+        general = [];
+        controlled = [];
+        cntrl = false;
     })
 
     return animalObj;
@@ -50,15 +60,9 @@ const statsOptionsReducer = (state = {}, action) => {
                   .join("")
                   .replace(/\t/g, "")
                   .split("\r\n");
-                // element[1] = element[1]
-                //   .split(" ")
-                //   .filter((str) => {
-                //       /\w/.test(str)
-                // });
             })
 
             const animalObj = animals(animalOptions);
-            debugger
             return animalObj
         default:
             return state
