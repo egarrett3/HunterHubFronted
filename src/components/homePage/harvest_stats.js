@@ -5,51 +5,62 @@ import RenderList from './render_list';
 
 const HarvestStats = ({}) => {
 
-    const harvestData = useSelector((state) => {
-      if (!isEmpty(state.harvestData)) {
-        return state.harvestData;
-      } else {
-        return [];
+  const harvestData = useSelector((state) => {
+    debugger
+    if (!isEmpty(state.harvestData)) {
+      let unitArr = []
+      for (let i = 0; i < state.harvestData.length; i++) {
+        state.harvestData[i].forEach((element) => {
+          if ((element[0] === "Unit" && element[1] === "1") || 
+              (element[0] === "Area" && element[1] === "1-1")) {
+            unitArr.push(state.harvestData[i]);
+          }
+        });
       }
-    });
-
-    const formatHarvestData = () => {
       debugger
-      return (
-        <>
-         {harvestData.map((element) => {
-          
-          return (
-            <>
-              <div className='stats-list'>
-
-                {element.map((ele,idx) => {
-                  return (
-                    <div className="stats-unit" key={idx}>
-                      <span>{ele[0]}:&nbsp;</span>
-                      <span>{ele[1]}</span>
-                    </div>
-                  );
-                })}
-
-              </div>
-            </>
-          )
-
-        })}
-        </>
-      )
+      return unitArr;
+    } else {
+      return [];
     }
+  });
 
-    useEffect(() => {
-      formatHarvestData()
-    },[harvestData])
-
+  const formatHarvestData = () => {
+    
     return (
-      <div className="stats-presentation">
-        {formatHarvestData()}
-      </div>
-    );
+      <>
+        {harvestData.map((element) => {
+        
+        return (
+          <>
+            <div className='stats-list'>
+
+              {element.map((ele,idx) => {
+                return (
+                  <div className="stats-unit" key={idx}>
+                    <span>{ele[0]}:&nbsp;</span>
+                    <span>{ele[1]}</span>
+                  </div>
+                );
+              })}
+
+            </div>
+          </>
+        )
+
+      })}
+      </>
+    )
+  }
+
+  useEffect(() => {
+    formatHarvestData()
+  },[harvestData])
+
+  return (
+    <div className="stats-presentation">
+      {formatHarvestData()}
+    </div>
+  );
 }
 
 export default HarvestStats;

@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import RenderList from "./render_list";
 
-const StatsOptions = ({setPayload}) => {
-    const [animal, setAnimal] = useState("Deer");
-    const [year, setYear] = useState("2019");
-    const [season, setSeason] = useState("general");
+const StatsOptions = ({setPayload, setYears, setSeasons, animals, years, seasons, animalObj}) => {
+    const [animal, setAnimal] = useState(animals[0]);
+    const [year, setYear] = useState(years[0][0]);
+    const [season, setSeason] = useState(seasons[0]);
+
+    useEffect(() => {
+        setYears(Object.values(animalObj[animal][season]))
+    }, [animal,season])
+
+    useEffect(() => {
+        setSeasons(Object.keys(animalObj[animal]))
+        setYear(Object.values(animalObj[animal][season])[0]);
+    }, [animal,season])
 
     useEffect(() => {
         setPayload({
@@ -12,25 +21,8 @@ const StatsOptions = ({setPayload}) => {
             year: year,
             season: season
         })
-        if (animal === "Deer" ||
-            animal === "Elk" ||
-            animal === "Bear" ||
-            animal === "Pronghorn" ||
-            animal === "Turkey") {
-              setSeason('general')
-          } else if (
-            animal === "Lion" || 
-            animal === "Wolf"
-          ) {
-              setSeason('general')
-          } else if (
-            animal === "Moose" || 
-            animal === "Sheep" || 
-            animal === "Goat"
-          ) {
-              setSeason("controlled")
-          }
     }, [animal,year,season])
+
 
     return (
       <>
@@ -51,7 +43,7 @@ const StatsOptions = ({setPayload}) => {
             <div className="harvest-criteria">
               Hunt: {season}
               <div className="dropdown method">
-                <RenderList setter={setSeason} animal={animal}>{methods}</RenderList>
+                <RenderList setter={setSeason}>{seasons}</RenderList>
               </div>
             </div>
           </div>
@@ -59,36 +51,5 @@ const StatsOptions = ({setPayload}) => {
       </>
     );
 }
-
-const animals = [
-  "Elk",
-  "Sheep",
-  "Deer",
-  "Moose",
-  "Bear",
-  "Wolf",
-  "Pronghorn",
-  "Lion",
-  "Turkey",
-  "Goat",
-];
-
-const years = [
-  "2019",
-  "2018",
-  "2017",
-  "2016",
-  "2015",
-  "2014",
-  "2013",
-  "2012",
-  "2011",
-  "2010",
-];
-
-const methods = [
-  "general",
-  "controlled"
-]
 
 export default StatsOptions;
