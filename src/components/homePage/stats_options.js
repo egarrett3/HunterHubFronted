@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import RenderList from "./render_list";
 
-const StatsOptions = ({setPayload, setYears, setSeasons, animals, years, seasons, animalObj}) => {
+const StatsOptions = ({setPayload, setYears, animals, years, season, animalObj}) => {
     const [animal, setAnimal] = useState(animals[0]);
     const [year, setYear] = useState(years[0][0]);
-    const [season, setSeason] = useState(seasons[0]);
+    // const [season, setSeason] = useState(seasons[0]);
 
     useEffect(() => {
         setYears(Object.values(animalObj[animal][season]))
-    }, [animal,season])
+    }, [animal])
 
     useEffect(() => {
-        setSeasons(Object.keys(animalObj[animal]))
+        // setSeasons(Object.keys(animalObj[animal]))
         setYear(Object.values(animalObj[animal][season])[0]);
     }, [animal,season])
 
     useEffect(() => {
+      debugger
         setPayload({
             animal: animal,
             year: year,
             season: season
         })
+      debugger
     }, [animal,year,season])
 
 
@@ -40,12 +42,12 @@ const StatsOptions = ({setPayload, setYears, setSeasons, animals, years, seasons
                 <RenderList setter={setYear}>{years}</RenderList>
               </div>
             </div>
-            <div className="harvest-criteria">
+            {/* <div className="harvest-criteria">
               Hunt: {season}
               <div className="dropdown method">
                 <RenderList setter={setSeason}>{seasons}</RenderList>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </>
