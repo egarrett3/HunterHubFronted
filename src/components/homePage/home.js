@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             <Map />
-            <StatsFrame />
+            <StatsFrame season={'general'}/>
         </>
     )
 }
