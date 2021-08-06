@@ -1,9 +1,8 @@
 import React from 'react';
 
-const NA = 'Unrecorded'
+const NA = 'no value recorded'
 
 const StatsUnit = ({field, value}) => {
-debugger
     return (
       <>
         <div className="stats-unit">

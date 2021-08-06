@@ -15,7 +15,7 @@ const filterUnit = (harvestData,unit) => {
       });
     }
   }
-  debugger
+  
   return unitArr;
 };
 
