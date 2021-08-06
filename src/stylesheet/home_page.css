@@ -31,12 +31,14 @@
     /* background-color: rgb(189, 133, 133); */
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    width:85%;
+    justify-content: space-between;
+    width:45%;
     height:100%;
 }
 
 .harvest-criteria {
+    display: flex;
+    align-items: center;
     position: relative;
     box-sizing: border-box;
     cursor: pointer;
@@ -92,10 +94,10 @@
     flex-direction: column;
 }
 
-.stats-unit:first-child {
+/* .stats-unit:first-child {
     display: flex;
     flex-direction: column;
-}
+} */
 
 .stats-unit {
     display: flex;
