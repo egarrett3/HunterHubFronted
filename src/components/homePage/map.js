@@ -1,15 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { getUnitMap } from '../../actions/map_actions';
 
 const Map = ({}) => {
 
+    const dispatch = useDispatch();
+
     return (
         <div className='map-container'> 
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-            </ul>
+            <div onClick={() => dispatch(getUnitMap())}>RETREIVE MAP DATA</div>
         </div>
     )
 }

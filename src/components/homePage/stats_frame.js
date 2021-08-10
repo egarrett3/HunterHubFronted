@@ -36,22 +36,12 @@ const StatsFrame = ({season}) => {
   
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (season === 'controlled') {
-  //     animalList = animals.filter(animal => animalObj[animal]["controlled"].length !== 0);
-  //   } else if (season === 'general') {
-  //     animalList = animals.filter(animal => animalObj[animal]["general"].length !== 0);
-  //   }
-  // },[season,animalObj])
-
   useEffect(() => {
     dispatch(fetchOptions())
   },[]);
 
   useEffect(() => {
-    debugger
     dispatch(fetchStats(payload));
-    debugger
   }, [payload.year,payload.season]);
 
   return (

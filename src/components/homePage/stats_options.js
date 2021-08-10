@@ -16,13 +16,11 @@ const StatsOptions = ({setPayload, setYears, animals, years, season, animalObj})
     }, [animal,season])
 
     useEffect(() => {
-      debugger
         setPayload({
             animal: animal,
             year: year,
             season: season
         })
-      debugger
     }, [animal,year,season])
 
 
