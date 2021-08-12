@@ -1,38 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import isEmpty from "lodash/isEmpty";
-import StatsUnit from './stats_unit';
+import StatsList from './stats_list';
 
-const HarvestStats = ({}) => {
 
-  const [harvestData] = useSelector((state) => {
-    if (!isEmpty(state.harvestData)) {
-      let unitArr = []
-      unitArr.push(state.harvestData[0]);
+const HarvestStats = ({animal}) => {
+    const filterUnit = (harvestData = [], unit = "1") => {
+      let unitArr = [];
+    
+      for (let i = 0; i < harvestData.length; i++) {
+        harvestData[i].forEach((element) => {
+          if (element[0] === "Unit" && element[1] === unit) {
+            unitArr.push(harvestData[i]);
+          }
+        });
+      }
+    
       return unitArr;
+    };
+
+  const currentUnit = useSelector((state) => {
+    if (isEmpty(state.unit.defaultSearch)) {
+      return '1'
+    } else {
+      return state.unit.defaultSearch;
+    }
+  })
+
+  const harvestData = useSelector((state) => {
+    const animalStats = state.harvestData.animalStats;
+    if (!isEmpty(animalStats)) {
+      const filteredData = filterUnit(animalStats, currentUnit);
+      return (filteredData);
     } else {
       return [];
     }
   });
-
+  
   const formatHarvestData = () => (
     <div className="stats-presentation">
-      <div className="stats-list">
-        {harvestData.map((ele) => {
-          return <StatsUnit key={ele[0]} field={ele[0]} value={ele[1]} />;
-        })}
-      </div>
+      {harvestData.map((ele, idx) => (
+        <StatsList key={`list-${idx}`} list={ele} />
+      ))}
     </div>
   );
-
+  
   useEffect(() => {
     formatHarvestData()
-  },[harvestData])
+  },[currentUnit,animal])
 
   return (
-    <div className="stats-presentation">
+    <>
       {formatHarvestData()}
-    </div>
+    </>
   );
 }
 
