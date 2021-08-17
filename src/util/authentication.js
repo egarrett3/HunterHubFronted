@@ -16,6 +16,13 @@ export const signup = (user) => {
     });
 }
 
+export const checkToken = () => {
+    return axios({
+        method: "GET",
+        url: "/api/checkToken",
+    })
+}
+
 // export const validatePassword = (password) => {
 //     return axios({
 //         method: "GET",

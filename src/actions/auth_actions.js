@@ -31,6 +31,7 @@ export const signup = (user) => dispatch => {
             .catch(err => dispatch(receiveErrors(err)))
 }
 
+
 // export const passwordSignupValidation = (password) => dispatch => {
 //     APIutil.validatePassword(password)
 //         .then(strength => dispatch(receiveErrors(strength.data)))

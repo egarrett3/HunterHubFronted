@@ -13,7 +13,7 @@ import rootReducer from '../reducers/root_reducer';
 // const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const configureStore = (preloadedState = {}) => {
-    debugger
+    
     let store = createStore(
         rootReducer,
         preloadedState,

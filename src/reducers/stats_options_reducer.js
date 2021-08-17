@@ -22,12 +22,7 @@ function animals(options) {
             if (/Controlled/.test(ele2)) {
                 cntrl = true
             } 
-            
-            // if (/\d/.test(ele2)) {
-            //     seasonANDyear.push(ele2.trim())
-            // } else if (/Controlled|General/.test(ele2)) {
-            //     seasonANDyear.unshift(ele2)
-            // }
+        
         })
         animalObj[anml] = {
             general: general,

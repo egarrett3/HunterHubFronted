@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;  
     background: rgb(167, 167, 167, .6);
-    width: 50%;
+    width: 60%;
     height: 70%;
     position: relative;
     left: 1.75%;
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;  
     background: rgba(184, 122, 122, 0.6);
-    width: 40%;
+    width: 30%;
     height: 90%;
     position: relative;
     right: 1.75%;
@@ -92,12 +92,13 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
-/* .stats-unit:first-child {
+.stats-unit:first-child {
     display: flex;
     flex-direction: column;
-} */
+}
 
 .stats-unit {
     display: flex;

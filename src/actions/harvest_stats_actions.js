@@ -32,13 +32,6 @@ export const receiveStatsError = (error) => {
     }
 }
 
-export const receiveUnit = (unit) => {
-    return {
-        type: RECEIVE_STATS,
-        unit
-    }
-}
-
 export const fetchStats = (payload) => dispatch => {
     getHarvestStats(payload)
         .then(stats => {

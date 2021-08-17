@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NA = 'no value recorded'
+const NA = 'no record'
 
 const StatsUnit = ({field, value}) => {
     return (

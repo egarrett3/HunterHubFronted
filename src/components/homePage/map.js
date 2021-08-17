@@ -2,25 +2,24 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MapContainer, GeoJSON } from "react-leaflet";
 import mapData from '../../assets/data/mapData.json';
-import { receiveUnit } from '../../actions/map_actions';
+import { receiveUnit, receiveInvalidUnit } from '../../actions/map_actions';
 import _ from 'lodash';
 import '../../stylesheet/map.css';
-import { RECEIVE_OPTIONS } from '../../actions/harvest_stats_actions';
 
 const MyMap = ({areas}) => {
 
     const dispatch = useDispatch();
-
-    const getColor = (unit) => {
-      console.log(areas)
-      if (!_.isEmpty(areas) && areas.has(unit.properties.NAME)) {
-        return "#bce4e8";
-      } else {
-        return "#d10000";
-      }
+  
+    const isValidArea = (unit) => {
+      return (!_.isEmpty(areas) && areas.has(unit));
     }
 
-    function style(unit,areas) {
+    const getColor = (unit) => {
+      unit = unit.properties.NAME;
+      return isValidArea(unit) ? "#bce4e8" : "#d10000";
+    }
+
+    function style(unit) {
       return {fillColor: getColor(unit)}
     };
 
@@ -36,7 +35,11 @@ const MyMap = ({areas}) => {
 
       layer.on({
         click: (event) => {
-            dispatch(receiveUnit(event.target._tooltip._content));
+          let zone = event.target._tooltip._content;
+            debugger
+            // isValidArea(zone) ?
+            dispatch(receiveUnit(zone)) 
+            // dispatch(receiveInvalidUnit(zone));
         },
       });
     
