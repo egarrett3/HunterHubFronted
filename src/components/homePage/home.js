@@ -30,11 +30,16 @@ const Home = () => {
 
   return (
     <>
-      <MyMap areas={areas}/>
-      {(!_.isEmpty(animalObj)) 
-        ? <StatsFrame season={"general"} zone={zone} animalObj={animalObj}/>
-        : <></>
-      }
+      {!_.isEmpty(areas) ? (
+        <MyMap areas={areas}/>
+      ) : (
+        <></>
+      )}
+      {!_.isEmpty(animalObj) ? (
+        <StatsFrame season={"general"} zone={zone} animalObj={animalObj} />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

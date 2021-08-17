@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchStats } from "../../actions/harvest_stats_actions";
 import StatsOptions from './stats_options';
 import HarvestStats from './harvest_stats'
-import MapInvalidAreaMSG from './mapInvalidAreaMsg';
+import MapInvalidAreaMsg from './mapInvalidAreaMsg';
 
 const StatsFrame = ({season,zone,animalObj}) => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const StatsFrame = ({season,zone,animalObj}) => {
         season={season}
       />
       {zone 
-        ? <MapInvalidAreaMSG animal={payload.animal} zone={zone}/>
+        ? <MapInvalidAreaMsg animal={payload.animal} zone={zone}/>
         : <HarvestStats animal={payload.animal}/> }
     </div>
   )
