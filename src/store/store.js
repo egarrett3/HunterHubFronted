@@ -1,26 +1,26 @@
 import { createStore, applyMiddleware } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import { persistStore, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from '../reducers/root_reducer';
 
-const persistConfig = {
-    key: 'root',
-    storage,
-}
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+// }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const configureStore = (preloadedState = {}) => {
-
+    debugger
     let store = createStore(
-        persistedReducer,
+        rootReducer,
         preloadedState,
         applyMiddleware(thunk,logger),
     )
-    let persistor = persistStore(store);
-    return {store,persistor};
+    // let persistor = persistStore(store);
+    return {store};
 }
 
 export default configureStore;
