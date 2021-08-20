@@ -29,7 +29,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="container">
       {!_.isEmpty(areas) ? (
         <MyMap areas={areas}/>
       ) : (
@@ -40,7 +40,7 @@ const Home = () => {
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 }
 
