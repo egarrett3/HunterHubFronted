@@ -22,7 +22,7 @@ const StatsFrame = ({season,zone,animalObj}) => {
       (animal) => animalObj[animal]["general"].length !== 0
     );
   }
-
+  
   const [years, setYears] = useState(yrs);
 
   const [payload, setPayload] = useState({
