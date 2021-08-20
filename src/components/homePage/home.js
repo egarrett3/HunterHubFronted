@@ -11,13 +11,15 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const zone = useSelector((state) => {
+    debugger
     return state.unit.invalidUnit ? state.unit.invalidUnit : "";
   });
-
+  
   const areas = useSelector((state) => {
+    debugger
     return state.harvestData.huntableAreas
-      ? state.harvestData.huntableAreas
-      : new Set();
+      ? Object.values(state.harvestData.huntableAreas)
+      : [];
   });
 
   const animalObj = useSelector((state) => {

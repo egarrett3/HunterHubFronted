@@ -37,12 +37,6 @@ export const receiveUnitMapError = (err) => {
 export const getUnitMap = () => dispatch => {
     
     fetchUnitMap()
-        .then(map => {
-            
-            dispatch(receiveUnitMap(map))
-        })
-            .catch(err => {
-                
-                dispatch(receiveUnitMapError(err))
-            })
+        .then(map => { dispatch(receiveUnitMap(map)) })
+            .catch(err => { dispatch(receiveUnitMapError(err)) })
 }

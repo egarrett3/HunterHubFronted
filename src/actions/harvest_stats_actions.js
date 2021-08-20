@@ -35,7 +35,8 @@ export const receiveStatsError = (error) => {
 export const fetchStats = (payload) => dispatch => {
     getHarvestStats(payload)
         .then(stats => {
-                dispatch(receiveStats(stats))})
+                
+            dispatch(receiveStats(stats))})
             .catch((err) => dispatch(receiveStatsError(err)))
 }
 

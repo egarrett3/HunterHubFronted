@@ -8,14 +8,13 @@ const HarvestStats = ({animal}) => {
     const filterUnit = (harvestData = [], unit = "1") => {
       let unitArr = [];
     
-      for (let i = 0; i < harvestData.length; i++) {
+      for (let i in harvestData) {
         harvestData[i].forEach((element) => {
           if (element[0] === "Unit" && element[1] === unit) {
             unitArr.push(harvestData[i]);
           }
         });
       }
-    
       return unitArr;
     };
 

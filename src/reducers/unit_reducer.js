@@ -6,10 +6,13 @@ const unitReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_UNIT:
             const unit = action.unit;
-            return { "defaultSearch": unit, "invalidUnit": false };
+            return { ...state,
+                    "defaultSearch": unit, 
+                    "invalidUnit": false };
         case RECEIVE_INVALID_UNIT:
             const invalidUnit = action.unit;
-            return { "invalidUnit" : invalidUnit }
+            return { ...state, 
+                    "invalidUnit" : invalidUnit }
         case RECEIVE_STATS:
             if (action.stats) {
                 const animalObj = action.stats.data.result;
@@ -18,7 +21,8 @@ const unitReducer = (state = {}, action) => {
                     ? defaultSearch = animalObj[0].Unit 
                     : defaultSearch = animalObj[0].HuntNumber
 
-                return { "defaultSearch": defaultSearch };
+                return { ...state,
+                         "defaultSearch": defaultSearch };
             }
         default:
             return state

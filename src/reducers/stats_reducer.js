@@ -8,7 +8,7 @@ const statsReducer = (state = {}, action) => {
             if (action.stats) {
                 const animalObj = action.stats.data.result;
                 const animalStats = [];
-                const huntableAreas = new Set();
+                const huntableAreas = new Set;
 
                 animalObj.forEach(element => {
                    animalStats.push(Object.entries(element)); 
@@ -21,13 +21,10 @@ const statsReducer = (state = {}, action) => {
                         }
                     })
                 })
-
-                let values = huntableAreas.values();
-                let first = values.next();
-                let val = first.value;
-
-                return { "animalStats": animalStats, 
-                         "huntableAreas": huntableAreas }
+                debugger
+                return { ...state, 
+                         "animalStats": {...animalStats}, 
+                         "huntableAreas": {...Array.from(huntableAreas)} }
             }
         case RECEIVE_STATS_ERROR:
             if (action.err) {

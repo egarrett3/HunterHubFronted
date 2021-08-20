@@ -11,11 +11,14 @@ const MyMap = ({areas}) => {
     const dispatch = useDispatch();
   
     const isValidArea = (unit) => {
-      return (!_.isEmpty(areas) && areas.has(unit));
+      return (!_.isEmpty(areas) && areas.includes(unit));
     }
 
     const getColor = (unit) => {
       unit = unit.properties.NAME;
+      //if unit exists within data set make it blue, otherwise make it red
+      // changing a color here will chang the logic in onEachUnit fn within 
+      // on click event handler
       return isValidArea(unit) ? "#bce4e8" : "#d10000";
     }
 
@@ -36,10 +39,10 @@ const MyMap = ({areas}) => {
       layer.on({
         click: (event) => {
           let zone = event.target._tooltip._content;
-            debugger
-            // isValidArea(zone) ?
-            dispatch(receiveUnit(zone)) 
-            // dispatch(receiveInvalidUnit(zone));
+          let validzone = event.target.options.fillColor;
+            validzone === "#bce4e8" ?
+            dispatch(receiveUnit(zone)) :
+            dispatch(receiveInvalidUnit(zone));
         },
       });
     
