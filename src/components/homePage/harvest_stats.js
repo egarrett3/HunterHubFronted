@@ -37,9 +37,11 @@ const HarvestStats = ({animal}) => {
   });
   
   const formatHarvestData = () => (
-    <div className="stats-presentation">
+    <div className='stats-presentation'>
       {harvestData.map((ele, idx) => (
-        <StatsList key={`list-${idx}`} list={ele} />
+        <div className={`stats-list-${idx}`} key={`list-container-${idx}`}>
+          <StatsList key={`list-${idx}`} list={ele} />
+        </div>
       ))}
     </div>
   );
