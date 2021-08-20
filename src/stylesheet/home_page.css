@@ -103,7 +103,6 @@
 }
 
 .stats-presentation {
-<<<<<<< HEAD
     display: flex;
     height: 100%;
     flex-direction: row;
@@ -114,7 +113,6 @@
 }
 
 .stats-list {
-=======
     height: 100%;
     width: 100%;
     display: grid;
@@ -142,7 +140,6 @@
 
 div[class^='stats-list-'] {
     height: 100%;
->>>>>>> 5cf77b03ab617ce1ce2a3aff768f6c69760b0739
     display: flex;
     margin:auto;
     flex-direction: column;
