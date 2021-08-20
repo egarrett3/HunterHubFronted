@@ -1,11 +1,16 @@
 import React, { useSelector } from 'react'
 
-function mapInvalidAreaMsg({animal,zone}) {
-    debugger
+const areaDescription = season => {
+    return season === 'general' ? 'Unit' : 'Hunt Number';
+}
+
+function mapInvalidAreaMsg({animal,zone,season}) {
+    
     return (
-        <>
-            <span>{`${zone} is not a valid place to hunt ${animal}`}</span>
-        </>
+        <div className="invalid-area-container">
+            {`${areaDescription(season)}${' '}${zone} 
+             is not a valid place to hunt ${animal}`}
+        </div>
     )
 }
 

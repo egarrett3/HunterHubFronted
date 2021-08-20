@@ -21,7 +21,7 @@ const statsReducer = (state = {}, action) => {
                         }
                     })
                 })
-                debugger
+                
                 return { ...state, 
                          "animalStats": {...animalStats}, 
                          "huntableAreas": {...Array.from(huntableAreas)} }

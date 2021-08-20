@@ -50,7 +50,7 @@ const StatsFrame = ({season,zone,animalObj}) => {
         season={season}
       />
       {zone 
-        ? <MapInvalidAreaMsg animal={payload.animal} zone={zone}/>
+        ? <MapInvalidAreaMsg animal={payload.animal} zone={zone} season={season}/>
         : <HarvestStats animal={payload.animal}/> }
     </div>
   )
