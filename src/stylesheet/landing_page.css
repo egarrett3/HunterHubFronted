@@ -1,14 +1,17 @@
 #root {
-    position: absolute;
+    background: rgb(133, 156, 110);
+    /* position: absolute; */
     box-sizing: border-box;
     height: 100%;
     width: 100%;
+    font-family: Lato, 'Georgia', Times, serif;
 }
 
 *,
 *::before,
 *::after {
     box-sizing: inherit;
+    font-family: inherit;
 }
 
 .auth-background {
