@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MapContainer, GeoJSON } from "react-leaflet";
 import mapData from '../../assets/data/mapData.json';
 import { receiveUnit, receiveInvalidUnit } from '../../actions/map_actions';
-import _ from 'lodash';
+import isEmpty from 'lodash';
 import '../../stylesheet/map.css';
 
 const MyMap = ({areas}) => {
@@ -11,7 +11,7 @@ const MyMap = ({areas}) => {
     const dispatch = useDispatch();
   
     const isValidArea = (unit) => {
-      return (!_.isEmpty(areas) && areas.includes(unit));
+      return (!isEmpty(areas) && areas.includes(unit));
     }
 
     const getColor = (unit) => {

@@ -4,7 +4,7 @@ import { fetchOptions } from "../../actions/harvest_stats_actions";
 import StatsFrame from './stats_frame';
 import MyMap from './map';
 import '../../stylesheet/home_page.css';
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 const Home = () => {
 
@@ -30,12 +30,12 @@ const Home = () => {
 
   return (
     <div className="container">
-      {!_.isEmpty(areas) ? (
+      {!isEmpty(areas) ? (
         <MyMap areas={areas}/>
       ) : (
         <></>
       )}
-      {!_.isEmpty(animalObj) ? (
+      {!isEmpty(animalObj) ? (
         <StatsFrame season={"general"} zone={zone} animalObj={animalObj} />
       ) : (
         <></>

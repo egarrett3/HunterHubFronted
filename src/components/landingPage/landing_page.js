@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
 import Login from './login';
 import Signup from './signup';
 import Validation from './validations';
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
+import debounce from "lodash/debounce";
 import '../../stylesheet/landing_page.css';
 import { clearErrors } from '../../actions/auth_actions';
-import isEmpty from 'lodash/isEmpty';
-
 
 const LandingPage = () => {
     //login and signup user information
@@ -54,7 +52,7 @@ const LandingPage = () => {
         userNameContents: true,
         userNameLngth: true,
       });
-      if (!(_.isEmpty(authErrors))) {
+      if (!(isEmpty(authErrors))) {
         dispatch(clearErrors())
       }
     }  
@@ -126,7 +124,7 @@ const LandingPage = () => {
       }
     }
 
-    const validatePassword = _.debounce(() => {
+    const validatePassword = debounce(() => {
       let pswd = signuppassword.trim();
       let minL = minLength(pswd)
       let minN = minNum(pswd)
@@ -147,7 +145,7 @@ const LandingPage = () => {
       });
     },500);
 
-    const validateUsername = _.debounce(() => {
+    const validateUsername = debounce(() => {
       let userName = signupusername.trim();
       let validContent = userNameContents(userName);
       let validLngth = userNameLngth(userName);
