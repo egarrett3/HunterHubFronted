@@ -1,3 +1,8 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
 #root {
     background: rgb(133, 156, 110);
     /* position: absolute; */
