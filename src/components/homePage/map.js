@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MapContainer, GeoJSON } from "react-leaflet";
-import mapData from '../../assets/data/mapData.json';
 import { receiveUnit, receiveInvalidUnit } from '../../actions/map_actions';
-import isEmpty from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import '../../stylesheet/map.css';
 
-const MyMap = ({areas}) => {
+const MyMap = ({areas,mapData}) => {
 
     const dispatch = useDispatch();
   
@@ -61,7 +60,7 @@ const MyMap = ({areas}) => {
             <GeoJSON 
               style={style}
               areas={areas}
-              data={mapData.features} 
+              data={mapData} 
               onEachFeature={onEachUnit} />
           </MapContainer>
       </div>

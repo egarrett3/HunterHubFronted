@@ -49,9 +49,9 @@ const StatsFrame = ({season,zone,animalObj}) => {
         years={years} 
         season={season}
       />
-      {zone 
-        ? <MapInvalidAreaMsg animal={payload.animal} zone={zone} season={season}/>
-        : <HarvestStats animal={payload.animal}/> }
+        {zone 
+          ? <MapInvalidAreaMsg animal={payload.animal} zone={zone} season={season}/>
+          : <HarvestStats animal={payload.animal}/> }
     </div>
   )
 }
