@@ -245,17 +245,13 @@ const LandingPage = () => {
                 ></Signup>
               )}
             </div>
-              {/* {toggle ? (
-                <></>
-              ) : ( */}
-                <Validation 
-                  attachErrorMessage={attachErrorMessage}
-                  isLoginSelected={isLoginSelected}
-                  authErrors={authErrors}
-                >
-                  {validate}
-                </Validation>
-              {/* )} */}
+              <Validation 
+                attachErrorMessage={attachErrorMessage}
+                isLoginSelected={isLoginSelected}
+                authErrors={authErrors}
+              >
+                {validate}
+              </Validation>
           </div>
         </div>
       </>

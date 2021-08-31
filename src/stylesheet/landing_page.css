@@ -4,12 +4,25 @@ body {
 }
 
 #root {
-    background: rgb(133, 156, 110);
     /* position: absolute; */
     box-sizing: border-box;
     height: 100%;
     width: 100%;
     font-family: Lato, 'Georgia', Times, serif;
+}
+
+.auth-background {
+    width: 100%;
+    height: 100%;
+    background: url(/src/assets/images/WildTurkeyFlyFreeVector.svg);
+    /* background: rgb(228, 241, 154); */
+    margin: 0;
+    padding: 0px;
+    /* min-height: 100vh; */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 *,
@@ -19,21 +32,6 @@ body {
     font-family: inherit;
 }
 
-.auth-background {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0px;
-    min-height: 100vh;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.auth-background {
-    background-image: url(/src/assets/images/WildTurkeyFlyFreeVector.svg);
-}
 
 .user-authAndError-container {
     position: absolute;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { PrivateRoute, ProtectedRoute } from '../util/auth_routes';
 import LandingPage from './landingPage/landing_page'
 import Home from './homePage/home'
