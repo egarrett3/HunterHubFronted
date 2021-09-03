@@ -15,8 +15,9 @@ const Protected = ({component: Component, isAuthenticated, path, exact}) => {
   return (<Route  
     path={path}
     exact={exact}
-    render={props => 
-      !isAuthenticated ? <Component {...props} /> : <Redirect to='/home' /> }
+    render={props => {
+      return !isAuthenticated ? <Component {...props} /> : <Redirect to='/home' /> }
+    }
   />)
 }
 

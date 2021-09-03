@@ -6,11 +6,12 @@ import Home from './homePage/home'
 
 
 function App() {
+
   return (
     <>
       <Switch>
-        <PrivateRoute path='/home' component={Home}/>
-        <ProtectedRoute exact path='/' component={LandingPage}/>
+        <PrivateRoute path='/home' component={Home} />
+        <ProtectedRoute exact path='/' component={LandingPage} />
       </Switch>
     </>
   );

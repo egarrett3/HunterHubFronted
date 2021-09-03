@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from "react-redux";
+// import svgPath from '../../assets/images/WildTurkeyFlyFreeVector.svg';
+import '../../stylesheet/landing_page.css';
 import Login from './login';
 import Signup from './signup';
 import Validation from './validations';
 import isEmpty from "lodash/isEmpty";
 import debounce from "lodash/debounce";
-import '../../stylesheet/landing_page.css';
 import { clearErrors } from '../../actions/auth_actions';
+import SvgBackground from '../svgComponent';
 
 const LandingPage = () => {
     //login and signup user information
@@ -22,7 +25,10 @@ const LandingPage = () => {
     const [isUserNameValid, setisUserNameValid] = useState(false);
     const [isEmailSelected, setisEmailSelected] = useState(false);
     const [isLoginSelected, setisLoginSelected] = useState(false);
-    
+
+    // state to hold file path to svg img
+    // const [svgPath,setSvgPath] = useState('');
+
     // validation of password during signup
     const [validate, setValidate] = useState({
       length: true,
@@ -215,44 +221,45 @@ const LandingPage = () => {
       }
     }, [ispswdSelected,signuppassword,isUserNameSelected,signupusername,signupemail,isEmailSelected]);
 
- 
     return (
-      <>
+      <> 
         <div className='auth-background'>
-          <div className="user-authAndError-container">
-            <div className="user-entrance">
-              {toggle ? (
-                <Login
-                  updateValue={updateValue}
-                  username={loginusername}
-                  password={loginpassword}
-                  email={loginemail}
-                  loginSelected={loginSelected}
-                  toggle={toggleAuth}
-                ></Login>
-              ) : (
-                <Signup
-                  updateValue={updateValue}
-                  username={signupusername}
-                  password={signuppassword}
-                  email={signupemail}
-                  pswdSelected={pswdSelected}
-                  ispswdValid={ispswdValid}
-                  userNameSelected={userNameSelected}
-                  emailSelected={emailSelected}
-                  isUserNameValid={isUserNameValid}
-                  toggle={toggleAuth}
-                ></Signup>
-              )}
+          <SvgBackground /> 
+            <div className="user-authAndError-container">
+              <div className="user-entrance">
+                {toggle ? (
+                  <Login
+                    updateValue={updateValue}
+                    username={loginusername}
+                    password={loginpassword}
+                    email={loginemail}
+                    loginSelected={loginSelected}
+                    toggle={toggleAuth}
+                  ></Login>
+                ) : (
+                  <Signup
+                    updateValue={updateValue}
+                    username={signupusername}
+                    password={signuppassword}
+                    email={signupemail}
+                    pswdSelected={pswdSelected}
+                    ispswdValid={ispswdValid}
+                    userNameSelected={userNameSelected}
+                    emailSelected={emailSelected}
+                    isUserNameValid={isUserNameValid}
+                    toggle={toggleAuth}
+                  ></Signup>
+                )}
+              </div>
+                <Validation 
+                  attachErrorMessage={attachErrorMessage}
+                  isLoginSelected={isLoginSelected}
+                  authErrors={authErrors}
+                >
+                  {validate}
+                </Validation>
             </div>
-              <Validation 
-                attachErrorMessage={attachErrorMessage}
-                isLoginSelected={isLoginSelected}
-                authErrors={authErrors}
-              >
-                {validate}
-              </Validation>
-          </div>
+          
         </div>
       </>
     );
@@ -260,3 +267,21 @@ const LandingPage = () => {
 }
 
 export default LandingPage;
+
+// // wait until DOM is ready
+// document.addEventListener("DOMContentLoaded", function(event) {
+  
+//   // wait until window is loaded - all images, styles-sheets, fonts, links, and other media assets
+//   // you could also use addEventListener() instead
+//   window.onload = function() {
+    
+//      // OPTIONAL - waits til next tick render to run code (prevents running in the middle of render tick)
+//      window.requestAnimationFrame(function() {
+    
+//         // GSAP custom code goes here     
+       
+//      });
+    
+//   };
+
+// });
